@@ -23,15 +23,16 @@ angular.module('testApp')
           return Facebook.isReady();
         },
         function(newVal) {
-          if (newVal)
-            $scope.facebookReady = true;
+          if (newVal){
+           $scope.facebookReady = true;
+          }
         }
       );
       
       var userIsConnected = false;
       
       Facebook.getLoginStatus(function(response) {
-        if (response.status == 'connected') {
+        if (response.status === 'connected') {
           userIsConnected = true;
         }
       });
@@ -50,7 +51,7 @@ angular.module('testApp')
        */
        $scope.login = function() {
          Facebook.login(function(response) {
-          if (response.status == 'connected') {
+          if (response.status === 'connected') {
             $scope.logged = true;
             $scope.me();
           }
@@ -83,14 +84,14 @@ angular.module('testApp')
             $scope.logged = false;  
           });
         });
-      }
+      };
       
       /**
        * Taking approach of Events :D
        */
       $scope.$on('Facebook:statusChange', function(ev, data) {
         console.log('Status: ', data);
-        if (data.status == 'connected') {
+        if (data.status === 'connected') {
           $scope.$apply(function() {
             $scope.salutation = true;
             $scope.byebye     = false;    
@@ -103,7 +104,7 @@ angular.module('testApp')
             // Dismiss byebye message after two seconds
             $timeout(function() {
               $scope.byebye = false;
-            }, 2000)
+            }, 2000);
           });
         }
         
@@ -131,6 +132,6 @@ angular.module('testApp')
           return angular.toJson(exp, true);
         };
       }
-    }
+    };
   });
 

@@ -8,12 +8,8 @@
  * Controller of the testApp
  */
 angular.module('testApp')
-  .controller('ContactCtrl', function ($scope, $http, $localForage, $location) {
+  .controller('ContactCtrl', function ($scope) {
   	//console.log($modal);
   	$scope.double = function(value) { return value * 2; };
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
   });
