@@ -1,19 +1,9 @@
 'use strict';
 
 
-angular.module('testApp', ['facebook'])
-	
-  .config(function(FacebookProvider) {
-     var myAppId = '409253232565080';
-     console.log(":)");
-     FacebookProvider.init(myAppId); 
-  })
-  .controller('MainController', [
-    '$scope',
-    '$timeout',
-    'Facebook',
-    function($scope, $timeout, Facebook) {
-      console.log(":'(");
+angular.module('testApp')
+.controller('LoginCtrl', function($scope, Facebook, $timeout) {
+
       // Define user empty data :/
       $scope.user = {};
       
@@ -122,27 +112,25 @@ angular.module('testApp', ['facebook'])
       
       
     }
-  ])
+  )
   
   /**
    * Just for debugging purposes.
    * Shows objects in a pretty way
    */
   .directive('debug', function() {
-		return {
-			restrict:	'E',
-			scope: {
-				expression: '=val'
-			},
-			template:	'<pre>{{debug(expression)}}</pre>',
-			link:	function(scope) {
-				// pretty-prints
-				scope.debug = function(exp) {
-					return angular.toJson(exp, true);
-				};
-			}
-		}
-	})
-  
-  ;
+    return {
+      restrict: 'E',
+      scope: {
+        expression: '=val'
+      },
+      template: '<pre>{{debug(expression)}}</pre>',
+      link: function(scope) {
+        // pretty-prints
+        scope.debug = function(exp) {
+          return angular.toJson(exp, true);
+        };
+      }
+    }
+  });
 

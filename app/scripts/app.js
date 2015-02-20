@@ -16,9 +16,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'LocalForageModule'
+    'LocalForageModule',
+    'facebook'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, FacebookProvider) {
+    FacebookProvider.init('409253232565080');
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
